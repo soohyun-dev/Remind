@@ -1,14 +1,18 @@
 import { collection, getDocs } from "firebase/firestore";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from "react-redux";
 import { firebaseAuth, fireStore } from "@/firebase";
 import { Layout } from "@/styles/style";
+import { userSlice } from "@/feature/userSlice";
 
 export default function Login() {
+  const dispatch = useDispatch();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
   const useMember = async () => {
     const memberInfo = collection(fireStore, `user/`);
@@ -28,9 +32,16 @@ export default function Login() {
         userEmail,
         userPassword
       );
-      console.log(curUserInfo);
       setUser(curUserInfo.user);
-      console.log(curUserInfo.user);
+
+      dispatch(
+        userSlice.actions.login({
+          email: userEmail,
+        })
+      );
+
+      alert("환영합니다!!");
+      navigate("/");
     } catch (err) {
       //   setIsAppropriate(false);
       // console.log(err.code);
