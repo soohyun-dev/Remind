@@ -40,9 +40,10 @@ export default function Login() {
         })
       );
 
-      alert("환영합니다!!");
+      alert("환영합니다!!😁");
       navigate("/Main");
     } catch (err) {
+      alert("이메일 혹은 비밀번호를 올바르게 입력해주세요.");
       //   setIsAppropriate(false);
       // console.log(err.code);
       /*
