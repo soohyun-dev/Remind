@@ -1,10 +1,15 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { firebaseAuth } from "@/firebase";
 import { Layout } from "../Home/Home.styled";
 import { SignUpSection } from "./SignUp.styled";
+import { userSlice } from "@/feature/userSlice";
 
 export default function SignUp() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("　");
@@ -19,8 +24,13 @@ export default function SignUp() {
         registerPassword
       );
       console.log(createdUser);
-      setRegisterEmail("");
-      setRegisterPassword("");
+      dispatch(
+        userSlice.actions.login({
+          email: registerEmail,
+        })
+      );
+      alert("회원가입이 완료되었습니다!!");
+      navigate("/Main");
     } catch (err) {
       // console.log(err.code);
       switch (err) {
