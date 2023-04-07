@@ -17,12 +17,14 @@ export default function Navbar() {
 
   return (
     <NavbarSection>
-      <div>네이브바</div>
+      <Link to="/Main">
+        <p>Home</p>
+      </Link>
       <div>
         <button onClick={() => purge()}>로그아웃</button>
       </div>
       <Link to="/Register">
-        <button>게시물 등록</button>
+        <p>게시물 등록</p>
       </Link>
     </NavbarSection>
   );

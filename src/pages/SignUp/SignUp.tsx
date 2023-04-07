@@ -2,12 +2,14 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { firebaseAuth } from "@/firebase";
+import { addDoc, collection } from "firebase/firestore";
+import { firebaseAuth, fireStore } from "@/firebase";
 import { Layout } from "../Home/Home.styled";
 import { SignUpSection } from "./SignUp.styled";
 import { userSlice } from "@/feature/userSlice";
 
 export default function SignUp() {
+  const newUserInfo = collection(fireStore, "users");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [registerEmail, setRegisterEmail] = useState("");
@@ -29,6 +31,17 @@ export default function SignUp() {
           email: registerEmail,
         })
       );
+
+      const user = {
+        user: registerEmail,
+        signUpDate: new Date(),
+      };
+      let docId = "";
+
+      await addDoc(newUserInfo, user).then((doc) => {
+        docId = doc.id;
+      });
+
       alert("회원가입이 완료되었습니다!!");
       navigate("/Main");
     } catch (err) {
