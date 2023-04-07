@@ -1,4 +1,4 @@
-# Remind 프로젝트
+![remind background img](https://user-images.githubusercontent.com/81623931/230572394-3b08bb97-b708-450a-9aea-f8b6145083c9.jpg)
 
 <div align='center'>
     <h1>Remind</h1>
@@ -11,7 +11,9 @@
   <br>
   
 [🏡 Remind 홈페이지](https://remind-git-dev-soohyun-dev.vercel.app/)
-  
+
+본 서비스는 모바일에 최적화 되어있습니다.
+
 </div>
 
 <br><br><br>
@@ -154,7 +156,7 @@
 
 # 📜 개발 기록
 
-[📜이슈 목록](https://github.com/soohyun-dev/Randomly/issues?q=is%3Aissue+is%3Aclosed)
+[📝 이슈 목록](https://github.com/soohyun-dev/Remind/issues?q=is%3Aissue+is%3Aclosed)
 
 <br><br><br>
 
