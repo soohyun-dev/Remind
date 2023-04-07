@@ -1,3 +1,3 @@
 # Remind 프로젝트
 
-체크
+🏡 배포 주소 : https://remind-git-dev-soohyun-dev.vercel.app/
