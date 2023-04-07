@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import Navbar from "./components/Navbar";
 import Router from "./Router";
 
 const GlobalStyle = createGlobalStyle`
