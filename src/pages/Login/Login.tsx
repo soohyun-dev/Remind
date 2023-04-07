@@ -1,4 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
+import { Link } from "react-router-dom";
 import { fireStore } from "@/firebase";
 import { Layout } from "@/styles/style";
 
@@ -20,6 +21,9 @@ export default function Login() {
     <Layout>
       <div>
         <h1>로그인 페이지입니다.</h1>
+        <Link to="/SignUp">
+          <button>회원가입</button>
+        </Link>
       </div>
     </Layout>
   );
