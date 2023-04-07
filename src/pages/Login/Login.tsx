@@ -41,7 +41,7 @@ export default function Login() {
       );
 
       alert("환영합니다!!");
-      navigate("/");
+      navigate("/Main");
     } catch (err) {
       //   setIsAppropriate(false);
       // console.log(err.code);
