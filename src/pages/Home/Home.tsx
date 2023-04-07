@@ -5,7 +5,7 @@ function Home() {
   return (
     <Layout>
       <div>
-        <h1>메인페이지</h1>
+        <h1>Remind 입니다.</h1>
       </div>
     </Layout>
   );
