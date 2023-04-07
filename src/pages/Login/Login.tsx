@@ -1,4 +1,4 @@
-import { Layout } from "@src/styles/style";
+import { Layout } from "@/styles/style";
 
 export default function Login() {
   return (
