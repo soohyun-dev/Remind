@@ -5,6 +5,8 @@ import { RootState } from "../store/store";
 const initialState = {
   user: null,
   email: null,
+  nickname: null,
+  docId: null,
 };
 
 export const userSlice = createSlice({
@@ -13,10 +15,13 @@ export const userSlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.email = action.payload.email;
+      state.nickname = action.payload.nickname;
+      state.docId = action.payload.docId;
     },
     logout: (state) => {
-      state.user = null;
       state.email = null;
+      state.nickname = null;
+      state.docId = null;
     },
   },
   extraReducers: (builder) => {
@@ -31,5 +36,7 @@ export const selectUserEmail = (state: RootState) => {
   console.log(state);
   return state.user.email;
 };
+export const selectNickname = (state: RootState) => state.user.nickname;
+export const selectDocId = (state: RootState) => state.user.docId;
 
 export default userSlice.reducer;

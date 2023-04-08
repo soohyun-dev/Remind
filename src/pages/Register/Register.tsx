@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Navbar from "@/components/Navbar";
 import { Layout } from "../Home/Home.styled";
 import { RegisterSection, RegisterTitle } from "./Register.styled";
 import { fireStore } from "@/firebase";
+import { selectDocId, selectUserEmail } from "@/feature/userSlice";
 
 interface NewData {
   site?: string;
@@ -16,6 +18,8 @@ interface NewData {
 }
 
 export default function Register() {
+  const user = useSelector(selectUserEmail);
+  const userDocId = useSelector(selectDocId);
   const [site, setSite] = useState("");
   const [provider, setProvider] = useState("");
   const [place, setPlace] = useState("");
@@ -27,7 +31,7 @@ export default function Register() {
   const navigate = useNavigate();
 
   const registerPosting = async () => {
-    const registerInfo = collection(fireStore, `users/`);
+    const registerInfo = collection(fireStore, `users/${userDocId}/newPosting`);
     const newData: NewData = {};
     newData.site = site;
     newData.provider = provider;
