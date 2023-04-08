@@ -21,9 +21,13 @@ const useOngoingPosting = (docId: string | null) => {
     `users/${docId}/ongoingPosting`
   );
 
-  return useQuery(`${docId}/ongoingPosting`, () =>
+  const ongoingPosting = useQuery(`${docId}/ongoingPosting`, () =>
     getOngoingPosting(ongoingPostingInfo)
   );
+
+  return ongoingPosting.data !== undefined
+    ? ongoingPosting
+    : { isLoading: true, isError: false, data: [] };
 };
 
 export default useOngoingPosting;

@@ -47,7 +47,7 @@ export default function Register() {
 
     await addDoc(registerInfo, newData);
 
-    alert("질문이 추가되었습니다.");
+    alert("포스팅이 추가되었습니다.");
     navigate("/Main");
   };
 
