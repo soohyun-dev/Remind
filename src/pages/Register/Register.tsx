@@ -15,6 +15,7 @@ interface NewData {
   submitDate?: string;
   reviewDate?: string;
   support?: string;
+  registerDate?: Date;
 }
 
 export default function Register() {
@@ -31,7 +32,10 @@ export default function Register() {
   const navigate = useNavigate();
 
   const registerPosting = async () => {
-    const registerInfo = collection(fireStore, `users/${userDocId}/newPosting`);
+    const registerInfo = collection(
+      fireStore,
+      `users/${userDocId}/ongoingPosting`
+    );
     const newData: NewData = {};
     newData.site = site;
     newData.provider = provider;
@@ -39,6 +43,7 @@ export default function Register() {
     newData.submitDate = submitDate;
     newData.reviewDate = reviewDate;
     newData.support = support;
+    newData.registerDate = new Date();
 
     await addDoc(registerInfo, newData);
 
@@ -64,7 +69,11 @@ export default function Register() {
           </select>
         </div>
         <div>
-          <input value={provider} placeholder="업체명" />
+          <input
+            value={provider}
+            onChange={(e) => setProvider(e.target.value)}
+            placeholder="업체명"
+          />
         </div>
         <div>
           <select value={place}>
@@ -74,13 +83,25 @@ export default function Register() {
           </select>
         </div>
         <div>
-          <input value={submitDate} placeholder="신청 날짜" />
+          <input
+            value={submitDate}
+            onChange={(e) => setSubmitDate(e.target.value)}
+            placeholder="신청 날짜"
+          />
         </div>
         <div>
-          <input value={reviewDate} placeholder="리뷰 기간" />
+          <input
+            value={reviewDate}
+            onChange={(e) => setReviewDate(e.target.value)}
+            placeholder="리뷰 기간"
+          />
         </div>
         <div>
-          <input value={support} placeholder="제공 내역" />
+          <input
+            value={support}
+            onChange={(e) => setSupport(e.target.value)}
+            placeholder="제공 내역"
+          />
         </div>
         <div />
         <button onClick={() => registerPosting()}>등록하기</button>
