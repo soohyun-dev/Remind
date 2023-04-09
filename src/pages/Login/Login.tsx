@@ -1,28 +1,46 @@
 import { collection, getDocs } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { firebaseAuth, fireStore } from "@/firebase";
 import { Layout } from "@/styles/style";
 import { userSlice } from "@/feature/userSlice";
 
+interface UserInfo {
+  nickname?: string;
+  docId?: string;
+}
+
 export default function Login() {
   const dispatch = useDispatch();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [user, setUser] = useState({});
+  const userInfo = ["", ""];
   const navigate = useNavigate();
 
-  const useMember = async () => {
-    const memberInfo = collection(fireStore, `user/`);
+  const getMember = async () => {
+    const memberInfo = collection(fireStore, `docId/`);
     const memberData = await getDocs(memberInfo);
     const members = memberData.docs.map((docTarget: any) => ({
       ...docTarget.data(),
-      id: docTarget.id,
     }));
 
-    console.log(members);
+    for (let i = 0; i < members.length; i += 1) {
+      if (members[i].user === userEmail) {
+        dispatch(
+          userSlice.actions.login({
+            user: userEmail,
+            email: userEmail,
+            nickname: members[i].nickname,
+            docId: members[i].docId,
+          })
+        );
+      }
+    }
+
+    return ["", ""];
   };
 
   const login = async () => {
@@ -32,14 +50,8 @@ export default function Login() {
         userEmail,
         userPassword
       );
+      getMember();
       setUser(curUserInfo.user);
-
-      dispatch(
-        userSlice.actions.login({
-          email: userEmail,
-        })
-      );
-
       alert("환영합니다!!😁");
       navigate("/Main");
     } catch (err) {
@@ -52,8 +64,6 @@ export default function Login() {
       */
     }
   };
-
-  useMember();
 
   return (
     <Layout>

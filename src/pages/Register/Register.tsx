@@ -7,7 +7,7 @@ import { Layout } from "../Home/Home.styled";
 import { RegisterSection, RegisterTitle } from "./Register.styled";
 import { fireStore } from "@/firebase";
 import { selectDocId, selectUserEmail } from "@/feature/userSlice";
-import { PROCEDDING } from "@/constant/constant";
+import CONSTANT from "@/constant/constant";
 
 interface NewData {
   site?: string;
@@ -45,7 +45,7 @@ export default function Register() {
     newData.submitDate = submitDate;
     newData.reviewDate = reviewDate;
     newData.support = support;
-    newData.state = PROCEDDING;
+    newData.state = CONSTANT.PROCEDDING;
     newData.registerDate = new Date();
 
     await addDoc(registerInfo, newData);

@@ -12,6 +12,7 @@ interface Posting {
   site: string;
   submitDate: string;
   support: string;
+  state: string;
 }
 
 export default function Preview({
@@ -23,6 +24,7 @@ export default function Preview({
   site,
   submitDate,
   support,
+  state,
 }: Posting) {
   return (
     <PreviewBox>
@@ -31,6 +33,7 @@ export default function Preview({
         <p>리뷰기간: {reviewDate}</p>
         <p>업체: {site}</p>
         <p>제공내역: {support}</p>
+        <p>{state}</p>
       </div>
     </PreviewBox>
   );

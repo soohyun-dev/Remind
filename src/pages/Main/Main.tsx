@@ -8,20 +8,6 @@ import Navbar from "@/components/Navbar";
 import useOngoingPosting from "@/hooks/useOngoingPosting";
 import Preview from "@/components/Preview";
 
-interface Posting {
-  id?: string;
-  place?: string;
-  registerDate?: {
-    seconds: number;
-    nanoseconds: number;
-  };
-  reviewDate?: string;
-  provider?: string;
-  site?: string;
-  submitDate?: string;
-  support?: string;
-}
-
 export default function Main() {
   const nickName = useSelector(selectNickname);
   const docId = useSelector(selectDocId);
