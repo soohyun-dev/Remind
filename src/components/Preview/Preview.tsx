@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   DetailButton,
   PreviewBox,
@@ -68,7 +69,22 @@ export default function Preview({
           <PreviewDdayParagraph>리뷰 마감기한 D-1</PreviewDdayParagraph>
         </PreviewDateBox>
         <PreviewButtonBox>
-          <DetailButton>상세보기</DetailButton>
+          <Link
+            to={`/Detail/${id}`}
+            state={{
+              id,
+              place,
+              registerDate,
+              reviewDate,
+              provider,
+              site,
+              submitDate,
+              support,
+              state,
+            }}
+          >
+            <DetailButton>상세보기</DetailButton>
+          </Link>
         </PreviewButtonBox>
       </PreviewFooterBox>
     </PreviewBox>

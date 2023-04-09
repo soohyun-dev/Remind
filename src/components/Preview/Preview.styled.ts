@@ -32,7 +32,7 @@ export const PreviewReviewStateBox = styled.div`
 export const ProviderBox = styled.div`
   margin: 0.2em 0 0 0;
   font-weight: 550;
-  width: 47%;
+  width: 43%;
 `;
 
 export const PreviewReviewStateInnerBox = styled.div`
@@ -51,11 +51,12 @@ export const PreviewReviewState = styled.div`
 export const PreviewFooterBox = styled.div`
   display: flex;
   margin: 2em 0 1em 0;
+  padding-bottom: 0.2em;
   border-bottom: 1px solid #f1f3f5;
 `;
 
 export const PreviewDateBox = styled.div`
-  width: 80%;
+  width: 73%;
 `;
 
 export const PreviewDdayParagraph = styled.p`
@@ -67,7 +68,7 @@ export const PreviewDdayParagraph = styled.p`
 export const PreviewButtonBox = styled.div``;
 
 export const DetailButton = styled.button`
-  padding: 0.5em 1em;
+  padding: 0.7em 1.5em;
   background-color: #3f76ff;
   border: none;
   border-radius: 5px;

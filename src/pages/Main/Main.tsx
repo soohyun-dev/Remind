@@ -24,12 +24,7 @@ export default function Main() {
         </div>
         <Suspense fallback={<div>Loading...</div>}>
           {Object.keys(ongoingPosting).map((key: string) => (
-            <Link to={`/Detail/${key}`} state={{ ...ongoingPosting[+key] }}>
-              <Preview
-                key={ongoingPosting[+key].id}
-                {...ongoingPosting[+key]}
-              />
-            </Link>
+            <Preview key={ongoingPosting[+key].id} {...ongoingPosting[+key]} />
           ))}
         </Suspense>
       </MainSection>
