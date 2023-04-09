@@ -14,6 +14,7 @@ export default function Detail() {
     site,
     submitDate,
     support,
+    state,
   } = location.state;
 
   return (
@@ -35,6 +36,12 @@ export default function Detail() {
         <div>
           <p>제공내역 : {support}</p>
         </div>
+        <div>
+          <p>상태 : {state}</p>
+        </div>
+        <button>컨텍 완료</button>
+        <button>방문 완료</button>
+        <button>리뷰쓰기 완료</button>
       </DetailSection>
     </Layout>
   );
