@@ -3,11 +3,11 @@ import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Navbar from "@/components/Navbar";
-import { Layout } from "../Home/Home.styled";
 import { RegisterSection, RegisterTitle } from "./Register.styled";
 import { fireStore } from "@/firebase";
 import { selectDocId, selectUserEmail } from "@/feature/userSlice";
 import CONSTANT from "@/constant/constant";
+import { Layout } from "@/styles/style";
 
 interface NewData {
   site?: string;

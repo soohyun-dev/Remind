@@ -1,11 +1,14 @@
 import {
+  DetailButton,
   PreviewBox,
+  PreviewButtonBox,
   PreviewDateBox,
   PreviewDdayParagraph,
   PreviewFooterBox,
   PreviewPlaceBox,
   PreviewReviewState,
   PreviewReviewStateBox,
+  PreviewReviewStateInnerBox,
   PreviewSiteBox,
   ProviderBox,
 } from "./Preview.styled";
@@ -38,31 +41,36 @@ export default function Preview({
 }: Posting) {
   return (
     <PreviewBox>
+      <PreviewSiteBox>
+        <p>리뷰노트</p>
+      </PreviewSiteBox>
+      <PreviewPlaceBox>
+        <p>서울시 마포구</p>
+      </PreviewPlaceBox>
       <PreviewReviewStateBox>
         <ProviderBox>
           <p>{provider}</p>
         </ProviderBox>
-        <PreviewReviewState>
-          <p>{state}</p>
-        </PreviewReviewState>
-        <PreviewReviewState>
-          <p>리뷰작성전</p>
-        </PreviewReviewState>
-        <PreviewReviewState>
-          <p>리뷰전</p>
-        </PreviewReviewState>
+        <PreviewReviewStateInnerBox>
+          <PreviewReviewState>
+            <p>{state}</p>
+          </PreviewReviewState>
+          <PreviewReviewState>
+            <p>리뷰작성전</p>
+          </PreviewReviewState>
+          <PreviewReviewState>
+            <p>리뷰완료</p>
+          </PreviewReviewState>
+        </PreviewReviewStateInnerBox>
       </PreviewReviewStateBox>
       <PreviewFooterBox>
-        <PreviewPlaceBox>
-          <p>서울시 마포구</p>
-        </PreviewPlaceBox>
         <PreviewDateBox>
           <PreviewDdayParagraph>리뷰 마감기한 D-1</PreviewDdayParagraph>
         </PreviewDateBox>
+        <PreviewButtonBox>
+          <DetailButton>상세보기</DetailButton>
+        </PreviewButtonBox>
       </PreviewFooterBox>
-      <PreviewSiteBox>
-        <p>리뷰노트</p>
-      </PreviewSiteBox>
     </PreviewBox>
   );
 }

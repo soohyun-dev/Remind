@@ -5,6 +5,6 @@ export const Layout = styled.section`
   max-width: 430px;
   margin: auto;
   min-height: 100vh;
-  background: #12121b;
-  color: #ffffff;
+  color: #212529;
+  background: #f1f3f5;
 `;

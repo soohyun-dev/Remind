@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import { Layout } from "../Home/Home.styled";
+
 import { DetailSection } from "./Detail.styled";
+import { Layout } from "@/styles/style";
 
 export default function Detail() {
   const location = useLocation();

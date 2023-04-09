@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectUserEmail } from "@/feature/userSlice";
-import { Layout } from "./Home.styled";
+import { Layout } from "@/styles/style";
 
 function Home() {
   const user = useSelector(selectUserEmail);

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import Navbar from "./components/Navbar";
 import Router from "./Router";
 
 const GlobalStyle = createGlobalStyle`
@@ -31,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     line-height: 1;
     font-weight: 300;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
   }
   ol, ul {
     list-style: none;
