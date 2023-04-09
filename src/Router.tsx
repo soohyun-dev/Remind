@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Detail from "./pages/Detail";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Main from "./pages/Main";
@@ -15,6 +16,7 @@ function Router() {
       <Route path="/SignUp" element={<SignUp />} />
       <Route path="/Main" element={<Main />} />
       <Route path="/Register" element={<Register />} />
+      <Route path="/Detail/:id" element={<Detail />} />
     </Routes>
   );
 }
