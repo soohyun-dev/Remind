@@ -24,7 +24,7 @@ interface Posting {
 export default function Main() {
   const nickName = useSelector(selectNickname);
   const docId = useSelector(selectDocId);
-  const { data: ongoingPosting }: { data?: Posting } = useOngoingPosting(docId);
+  const { data: ongoingPosting } = useOngoingPosting(docId);
 
   return (
     <Layout>
@@ -32,17 +32,8 @@ export default function Main() {
       <MainSection>
         <div>{nickName === null ? "" : <p>{nickName} 님</p>}</div>
         <Suspense fallback={<div>Loading...</div>}>
-          {Object.keys(ongoingPosting).map((key, idx) => (
-            <Preview
-              id={ongoingPosting[key].id}
-              place={ongoingPosting[key].place}
-              registerDate={ongoingPosting[key].registerDate}
-              reviewDate={ongoingPosting[key].reviewDate}
-              provider={ongoingPosting[key].provider}
-              site={ongoingPosting[key].site}
-              submitDate={ongoingPosting[key].submitDate}
-              support={ongoingPosting[key].support}
-            />
+          {Object.keys(ongoingPosting).map((key: string) => (
+            <Preview key={ongoingPosting[+key].id} {...ongoingPosting[+key]} />
           ))}
         </Suspense>
       </MainSection>

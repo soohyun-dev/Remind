@@ -10,7 +10,6 @@ const getOngoingPosting = async (ongoingPostingInfo: any) => {
     ...doc.data(),
     id: doc.id,
   }));
-  console.log(ongoingPostingData, ongoingPosting);
 
   return ongoingPosting;
 };
@@ -27,7 +26,7 @@ const useOngoingPosting = (docId: string | null) => {
 
   return ongoingPosting.data !== undefined
     ? ongoingPosting
-    : { isLoading: true, isError: false, data: [] };
+    : { isLoading: true, data: [] };
 };
 
 export default useOngoingPosting;

@@ -70,6 +70,7 @@ export default function Register() {
         </div>
         <div>
           <input
+            type="text"
             value={provider}
             onChange={(e) => setProvider(e.target.value)}
             placeholder="업체명"
@@ -84,6 +85,7 @@ export default function Register() {
         </div>
         <div>
           <input
+            type="text"
             value={submitDate}
             onChange={(e) => setSubmitDate(e.target.value)}
             placeholder="신청 날짜"
@@ -91,6 +93,7 @@ export default function Register() {
         </div>
         <div>
           <input
+            type="text"
             value={reviewDate}
             onChange={(e) => setReviewDate(e.target.value)}
             placeholder="리뷰 기간"
@@ -98,6 +101,7 @@ export default function Register() {
         </div>
         <div>
           <input
+            type="text"
             value={support}
             onChange={(e) => setSupport(e.target.value)}
             placeholder="제공 내역"

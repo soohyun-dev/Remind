@@ -1,5 +1,19 @@
 import { PreviewBox } from "./Preview.styled";
 
+interface Posting {
+  id: string;
+  place: string;
+  registerDate: {
+    seconds: number;
+    nanoseconds: number;
+  };
+  reviewDate: string;
+  provider: string;
+  site: string;
+  submitDate: string;
+  support: string;
+}
+
 export default function Preview({
   id,
   place,
@@ -9,7 +23,7 @@ export default function Preview({
   site,
   submitDate,
   support,
-}) {
+}: Posting) {
   return (
     <PreviewBox>
       <div>
