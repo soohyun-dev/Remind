@@ -23,7 +23,6 @@ export const MainCatagoryBox = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 1em;
-  border-bottom: 1px solid #d2e3fc;
 `;
 
 export const MainCatagoryButton = styled.button`

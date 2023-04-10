@@ -3,7 +3,13 @@ import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Navbar from "@/components/Navbar";
-import { RegisterSection, RegisterTitle } from "./Register.styled";
+import {
+  RegisterButton,
+  RegisterInput,
+  RegisterSection,
+  RegisterTitleBox,
+  RegisterTitleParagraph,
+} from "./Register.styled";
 import { fireStore } from "@/firebase";
 import { selectDocId, selectUserEmail } from "@/feature/userSlice";
 import CONSTANT from "@/constant/constant";
@@ -54,25 +60,36 @@ export default function Register() {
     navigate("/Main");
   };
 
+  console.log(site);
+
   return (
     <Layout>
       <Navbar />
       <RegisterSection>
-        <RegisterTitle>
-          <p>Register</p>
-        </RegisterTitle>
+        <RegisterTitleBox>
+          <RegisterTitleParagraph>Register</RegisterTitleParagraph>
+        </RegisterTitleBox>
         <div>
           <p>체험단 사이트</p>
-          <select value={site}>
-            <option>미블</option>
-            <option>리뷰노트</option>
-            <option>링블</option>
-            <option>체험뷰</option>
-            <option>기타</option>
+          <select onChange={(e) => setSite(e.target.value)}>
+            <option selected value="미블">
+              미블
+            </option>
+            <option value="리뷰노트">리뷰노트</option>
+            <option value="링블">링블</option>
+            <option value="체험뷰">체험뷰</option>
+            <option value="리뷰플레이스">리뷰플레이스</option>
+            <option value="인스타협찬">인스타협찬</option>
+            <option value="기타">기타</option>
+          </select>
+          <select value={place}>
+            <option>서울</option>
+            <option>경기</option>
+            <option>인천</option>
           </select>
         </div>
         <div>
-          <input
+          <RegisterInput
             type="text"
             value={provider}
             onChange={(e) => setProvider(e.target.value)}
@@ -80,11 +97,12 @@ export default function Register() {
           />
         </div>
         <div>
-          <select value={place}>
-            <option>서울</option>
-            <option>경기</option>
-            <option>인천</option>
-          </select>
+          <RegisterInput
+            type="text"
+            value={support}
+            onChange={(e) => setSupport(e.target.value)}
+            placeholder="제공 내역"
+          />
         </div>
         <div>
           <input
@@ -102,16 +120,9 @@ export default function Register() {
             placeholder="리뷰 기간"
           />
         </div>
-        <div>
-          <input
-            type="text"
-            value={support}
-            onChange={(e) => setSupport(e.target.value)}
-            placeholder="제공 내역"
-          />
-        </div>
-        <div />
-        <button onClick={() => registerPosting()}>등록하기</button>
+        <RegisterButton onClick={() => registerPosting()}>
+          등록하기
+        </RegisterButton>
       </RegisterSection>
     </Layout>
   );

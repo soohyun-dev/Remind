@@ -6,6 +6,7 @@ export const NavbarSection = styled.section`
   background: #fff;
   align-items: center;
   line-height: 2em;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
 `;
 
 export const LogoBox = styled.div`

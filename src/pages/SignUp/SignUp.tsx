@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { firebaseAuth, fireStore } from "@/firebase";
@@ -36,6 +36,7 @@ export default function SignUp() {
       const user = {
         user: registerEmail,
         nickname,
+        password: registerPassword,
         signUpDate: new Date(),
       };
       let docId = "";
@@ -47,6 +48,7 @@ export default function SignUp() {
 
       const newData = {
         user: registerEmail,
+        passwrod: registerPassword,
         nickname,
         docId,
       };
@@ -140,8 +142,11 @@ export default function SignUp() {
         </div>
         <div>
           <SignUpButton onClick={() => isAllowProcess()}>
-            회원가입완료
+            회원가입 완료
           </SignUpButton>
+          <Link to="/">
+            <SignUpButton>이전</SignUpButton>
+          </Link>
         </div>
       </SignUpSection>
     </Layout>
