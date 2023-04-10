@@ -1,18 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { selectUser, userSlice } from "@/feature/userSlice";
+import { selectUser, selectUserEmail, userSlice } from "@/feature/userSlice";
 import { persistor } from "@/main";
 import {
   LogoBox,
   LogoutBox,
   LogoutButton,
   MenuBox,
+  MenuFeatureBox,
   MenuItemBox,
   NavbarSection,
 } from "./Navbar.styled";
 
 export default function Navbar() {
-  const user = useSelector(selectUser);
+  const email = useSelector(selectUserEmail);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -30,10 +31,10 @@ export default function Navbar() {
           <p>Remind</p>
         </Link>
       </LogoBox>
-      {user === null ? (
+      {email === null ? (
         ""
       ) : (
-        <div>
+        <MenuFeatureBox>
           <MenuBox>
             <MenuItemBox>
               <Link to="/Main">
@@ -48,8 +49,8 @@ export default function Navbar() {
           </MenuBox>
           <LogoutBox>
             <LogoutButton onClick={() => purge()}>로그아웃</LogoutButton>
-          </LogoutBox>{" "}
-        </div>
+          </LogoutBox>
+        </MenuFeatureBox>
       )}
     </NavbarSection>
   );

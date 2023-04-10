@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const LoginSection = styled.section`
   padding: 2em;
   background: #fff;
-  padding-top: 15vh;
+  padding-top: 10vh;
   min-height: 90vh;
   text-align: center;
 `;

@@ -14,8 +14,12 @@ export const LogoBox = styled.div`
   font-weight: 600;
 `;
 
+export const MenuFeatureBox = styled.div`
+  display: flex;
+  width: 80%;
+`;
 export const MenuBox = styled.div`
-  width: 62%;
+  width: 80%;
   display: flex;
   justify-content: center;
 `;
@@ -27,7 +31,7 @@ export const MenuItemBox = styled.div`
 `;
 
 export const LogoutBox = styled.div`
-  width: 18%;
+  width: 20%;
 `;
 
 export const LogoutButton = styled.button`
