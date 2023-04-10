@@ -6,6 +6,15 @@ import { useDispatch } from "react-redux";
 import { firebaseAuth, fireStore } from "@/firebase";
 import { Layout } from "@/styles/style";
 import { userSlice } from "@/feature/userSlice";
+import {
+  LoginButton,
+  LoginButtonBox,
+  LoginInput,
+  LoginSection,
+  LoginTitleBox,
+  LoginTitleParagraph,
+} from "./Login.styled";
+import Navbar from "@/components/Navbar";
 
 interface UserInfo {
   nickname?: string;
@@ -67,27 +76,32 @@ export default function Login() {
 
   return (
     <Layout>
-      <div>
-        <h1>로그인 페이지입니다.</h1>
+      <Navbar />
+      <LoginSection>
+        <LoginTitleBox>
+          <LoginTitleParagraph>로그인</LoginTitleParagraph>
+        </LoginTitleBox>
         <div>
-          <input
+          <LoginInput
             onChange={(e) => setUserEmail(e.target.value)}
             placeholder="이메일"
           />
         </div>
         <div>
-          <input
+          <LoginInput
             onChange={(e) => setUserPassword(e.target.value)}
             placeholder="비밀번호"
           />
         </div>
-        <div>
-          <button onClick={() => login()}>로그인</button>
-        </div>
-        <Link to="/SignUp">
-          <button>회원가입</button>
-        </Link>
-      </div>
+        <LoginButtonBox>
+          <div>
+            <LoginButton onClick={() => login()}>로그인</LoginButton>
+          </div>
+          <Link to="/SignUp">
+            <LoginButton>회원가입</LoginButton>
+          </Link>
+        </LoginButtonBox>
+      </LoginSection>
     </Layout>
   );
 }

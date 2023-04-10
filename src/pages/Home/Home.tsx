@@ -42,9 +42,13 @@ function Home() {
           )}
         </HomeLoginBox>
         <HomeSignUpBox>
-          <Link to="/SignUp">
-            <HomeSignUpParagraph>처음 오셨나요? </HomeSignUpParagraph>
-          </Link>
+          {user === null ? (
+            <Link to="/SignUp">
+              <HomeSignUpParagraph>처음 오셨나요? </HomeSignUpParagraph>
+            </Link>
+          ) : (
+            ""
+          )}
         </HomeSignUpBox>
       </HomeSection>
     </Layout>

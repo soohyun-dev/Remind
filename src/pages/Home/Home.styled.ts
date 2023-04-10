@@ -36,6 +36,10 @@ export const HomeLoginButton = styled.button`
   background-color: #3f76ff;
   font-size: 16px;
   color: white;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 export const HomeSignUpBox = styled.div`

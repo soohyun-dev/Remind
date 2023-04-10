@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { userSlice } from "@/feature/userSlice";
+import { selectUser, userSlice } from "@/feature/userSlice";
 import { persistor } from "@/main";
 import {
   LogoBox,
@@ -12,6 +12,7 @@ import {
 } from "./Navbar.styled";
 
 export default function Navbar() {
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,23 +26,31 @@ export default function Navbar() {
   return (
     <NavbarSection>
       <LogoBox>
-        <p>Remind</p>
+        <Link to="/">
+          <p>Remind</p>
+        </Link>
       </LogoBox>
-      <MenuBox>
-        <MenuItemBox>
-          <Link to="/Main">
-            <p>Home</p>
-          </Link>
-        </MenuItemBox>
-        <MenuItemBox>
-          <Link to="/Register">
-            <p>게시물 등록</p>
-          </Link>
-        </MenuItemBox>
-      </MenuBox>
-      <LogoutBox>
-        <LogoutButton onClick={() => purge()}>로그아웃</LogoutButton>
-      </LogoutBox>
+      {user === null ? (
+        ""
+      ) : (
+        <div>
+          <MenuBox>
+            <MenuItemBox>
+              <Link to="/Main">
+                <p>Home</p>
+              </Link>
+            </MenuItemBox>
+            <MenuItemBox>
+              <Link to="/Register">
+                <p>게시물 등록</p>
+              </Link>
+            </MenuItemBox>
+          </MenuBox>
+          <LogoutBox>
+            <LogoutButton onClick={() => purge()}>로그아웃</LogoutButton>
+          </LogoutBox>{" "}
+        </div>
+      )}
     </NavbarSection>
   );
 }
