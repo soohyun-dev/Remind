@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 import { selectUserEmail } from "@/feature/userSlice";
 import { Layout } from "@/styles/style";
 import {
@@ -19,14 +20,16 @@ function Home() {
   return (
     <Layout>
       <HomeSection>
-        <HomeGuideBox>
-          <HomeGuideParagraph>
-            체험단/협찬을 기록하고 관리하는 서비스
-          </HomeGuideParagraph>
-        </HomeGuideBox>
-        <HomeLogoBox>
-          <HomeLogoParagraph>Remind</HomeLogoParagraph>
-        </HomeLogoBox>
+        <Fade direction="up">
+          <HomeGuideBox>
+            <HomeGuideParagraph>
+              체험단/협찬을 기록하고 관리하는 서비스
+            </HomeGuideParagraph>
+          </HomeGuideBox>
+          <HomeLogoBox>
+            <HomeLogoParagraph>Remind</HomeLogoParagraph>
+          </HomeLogoBox>
+        </Fade>
         <HomeLoginBox>
           {user === null ? (
             <Link to="/Login">
