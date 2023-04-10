@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HomeSection = styled.section`
   padding: 2em;
   background: #fff;
-  padding-top: 40vh;
+  padding-top: 30vh;
   min-height: 100vh;
 `;
 

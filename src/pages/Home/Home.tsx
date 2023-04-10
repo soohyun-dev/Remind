@@ -20,7 +20,7 @@ function Home() {
   return (
     <Layout>
       <HomeSection>
-        <Fade direction="up">
+        <Fade direction="up" duration={2000}>
           <HomeGuideBox>
             <HomeGuideParagraph>
               체험단/협찬을 기록하고 관리하는 서비스
