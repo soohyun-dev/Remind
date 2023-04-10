@@ -56,7 +56,7 @@ export const PreviewFooterBox = styled.div`
 `;
 
 export const PreviewDateBox = styled.div`
-  width: 73%;
+  width: 75%;
 `;
 
 export const PreviewDdayParagraph = styled.p`
@@ -77,6 +77,6 @@ export const DetailButton = styled.button`
   font-size: 12px;
   cursor: pointer;
   &:hover {
-    opacity: 80%;
+    opacity: 0.9;
   }
 `;
