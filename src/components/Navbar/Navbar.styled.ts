@@ -37,4 +37,5 @@ export const LogoutButton = styled.button`
   color: #fff;
   background: #d63384;
   font-size: 12px;
+  cursor: pointer;
 `;

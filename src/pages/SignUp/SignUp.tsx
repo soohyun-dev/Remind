@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { firebaseAuth, fireStore } from "@/firebase";
-import { Layout } from "../Home/Home.styled";
 import { SignUpSection } from "./SignUp.styled";
 import { userSlice } from "@/feature/userSlice";
+import { Layout } from "@/styles/style";
 
 export default function SignUp() {
   const newUserInfo = collection(fireStore, "users");

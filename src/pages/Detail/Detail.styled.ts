@@ -13,10 +13,11 @@ export const DetailTopBox = styled.div`
   font-size: 22px;
   padding-bottom: 0.5em;
   border-bottom: 1px solid #f1f3f5;
+  line-height: 4vh;
 `;
 
 export const DetailSiteBox = styled.p`
-  width: 16%;
+  width: 20%;
 `;
 
 export const DetaileSiteParagraph = styled.p`
@@ -24,7 +25,7 @@ export const DetaileSiteParagraph = styled.p`
 `;
 
 export const DetailProviderBox = styled.p`
-  width: 66%;
+  width: 55%;
 `;
 
 export const DetailProviderParagraph = styled.p`
@@ -32,12 +33,13 @@ export const DetailProviderParagraph = styled.p`
 `;
 
 export const DetailStateBox = styled.p`
-  width: 18%;
+  width: 25%;
+  text-align: center;
 `;
 
 export const DetailStateParagraph = styled.p`
   font-size: 16px;
-  padding: 0.4em 0.8em;
+  padding: 0.2em 0.6em;
   background-color: #3f76ff;
   color: #fff;
   font-weight: 500;
@@ -76,6 +78,7 @@ export const DetailButtonBox = styled.div`
 `;
 
 export const DetailFooterButton = styled.button`
+  text-align: center;
   margin: 1em 0;
   padding: 0.8em 0;
   width: 100%;

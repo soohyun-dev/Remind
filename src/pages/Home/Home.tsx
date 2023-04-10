@@ -2,23 +2,48 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectUserEmail } from "@/feature/userSlice";
 import { Layout } from "@/styles/style";
+import {
+  HomeGuideBox,
+  HomeGuideParagraph,
+  HomeLoginBox,
+  HomeLoginButton,
+  HomeLogoBox,
+  HomeLogoParagraph,
+  HomeSection,
+  HomeSignUpBox,
+  HomeSignUpParagraph,
+} from "./Home.styled";
 
 function Home() {
   const user = useSelector(selectUserEmail);
   return (
     <Layout>
-      <div>
-        <h1>Remind 입니다.</h1>
-        {user === null ? (
-          <Link to="/Login">
-            <button>로그인</button>
+      <HomeSection>
+        <HomeGuideBox>
+          <HomeGuideParagraph>
+            체험단/협찬을 기록하고 관리하는 서비스
+          </HomeGuideParagraph>
+        </HomeGuideBox>
+        <HomeLogoBox>
+          <HomeLogoParagraph>Remind</HomeLogoParagraph>
+        </HomeLogoBox>
+        <HomeLoginBox>
+          {user === null ? (
+            <Link to="/Login">
+              <HomeLoginButton>로그인</HomeLoginButton>
+            </Link>
+          ) : (
+            <Link to="Main">
+              <HomeLoginButton>메인으로</HomeLoginButton>
+            </Link>
+          )}
+        </HomeLoginBox>
+        <HomeSignUpBox>
+          <Link to="/SignUp">
+            <HomeSignUpParagraph>처음 오셨나요? </HomeSignUpParagraph>
           </Link>
-        ) : (
-          <Link to="Main">
-            <button>메인으로</button>
-          </Link>
-        )}
-      </div>
+        </HomeSignUpBox>
+      </HomeSection>
     </Layout>
   );
 }
