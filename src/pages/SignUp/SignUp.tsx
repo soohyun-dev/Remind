@@ -4,9 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { firebaseAuth, fireStore } from "@/firebase";
-import { SignUpSection } from "./SignUp.styled";
+import {
+  SignUpButton,
+  SignUpInput,
+  SignUpSection,
+  SignUpTitleBox,
+  SignUpTitleParagraph,
+} from "./SignUp.styled";
 import { userSlice } from "@/feature/userSlice";
 import { Layout } from "@/styles/style";
+import Navbar from "@/components/Navbar";
 
 export default function SignUp() {
   const newUserInfo = collection(fireStore, "users");
@@ -102,34 +109,39 @@ export default function SignUp() {
 
   return (
     <Layout>
+      <Navbar />
       <SignUpSection>
-        <div>회원가입페이지입니다.</div>
+        <SignUpTitleBox>
+          <SignUpTitleParagraph>회원가입</SignUpTitleParagraph>
+        </SignUpTitleBox>
         <div>
-          <input
+          <SignUpInput
             onChange={(e) => setRegisterEmail(e.target.value)}
-            placeholder="이메일"
+            placeholder="@을 포함한 올바른 이메일 형식"
           />
         </div>
         <div>
-          <input
+          <SignUpInput
             onChange={(e) => setNickname(e.target.value)}
-            placeholder="닉네임"
+            placeholder="10자리 이내의 닉네임"
           />
         </div>
         <div>
-          <input
+          <SignUpInput
             onChange={(e) => setRegisterPassword(e.target.value)}
-            placeholder="비밀번호"
+            placeholder="6자리 이상의 비밀번호"
           />
         </div>
         <div>
-          <input
+          <SignUpInput
             onChange={(e) => setCheckPassword(e.target.value)}
             placeholder="비밀번호 확인"
           />
         </div>
         <div>
-          <button onClick={() => isAllowProcess()}>회원가입</button>
+          <SignUpButton onClick={() => isAllowProcess()}>
+            회원가입완료
+          </SignUpButton>
         </div>
       </SignUpSection>
     </Layout>
