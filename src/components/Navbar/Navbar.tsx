@@ -2,7 +2,14 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { userSlice } from "@/feature/userSlice";
 import { persistor } from "@/main";
-import { NavbarSection } from "./Navbar.styled";
+import {
+  LogoBox,
+  LogoutBox,
+  LogoutButton,
+  MenuBox,
+  MenuItemBox,
+  NavbarSection,
+} from "./Navbar.styled";
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -17,15 +24,24 @@ export default function Navbar() {
 
   return (
     <NavbarSection>
-      <Link to="/Main">
-        <p>Home</p>
-      </Link>
-      <div>
-        <button onClick={() => purge()}>로그아웃</button>
-      </div>
-      <Link to="/Register">
-        <p>게시물 등록</p>
-      </Link>
+      <LogoBox>
+        <p>Remind</p>
+      </LogoBox>
+      <MenuBox>
+        <MenuItemBox>
+          <Link to="/Main">
+            <p>Home</p>
+          </Link>
+        </MenuItemBox>
+        <MenuItemBox>
+          <Link to="/Register">
+            <p>게시물 등록</p>
+          </Link>
+        </MenuItemBox>
+      </MenuBox>
+      <LogoutBox>
+        <LogoutButton onClick={() => purge()}>로그아웃</LogoutButton>
+      </LogoutBox>
     </NavbarSection>
   );
 }
