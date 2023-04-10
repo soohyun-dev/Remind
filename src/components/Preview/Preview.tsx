@@ -21,10 +21,10 @@ interface Posting {
     seconds: number;
     nanoseconds: number;
   };
-  reviewDate: string;
   provider: string;
   site: string;
-  submitDate: string;
+  startDate: string;
+  endDate: string;
   support: string;
   state: string;
 }
@@ -33,20 +33,20 @@ export default function Preview({
   id,
   place,
   registerDate,
-  reviewDate,
   provider,
   site,
-  submitDate,
+  startDate,
+  endDate,
   support,
   state,
 }: Posting) {
   return (
     <PreviewBox>
       <PreviewSiteBox>
-        <p>리뷰노트</p>
+        <p>{site}</p>
       </PreviewSiteBox>
       <PreviewPlaceBox>
-        <p>서울시 마포구</p>
+        <p>{place}</p>
       </PreviewPlaceBox>
       <PreviewReviewStateBox>
         <ProviderBox>
@@ -75,10 +75,10 @@ export default function Preview({
               id,
               place,
               registerDate,
-              reviewDate,
               provider,
               site,
-              submitDate,
+              startDate,
+              endDate,
               support,
               state,
             }}

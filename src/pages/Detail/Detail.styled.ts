@@ -17,11 +17,14 @@ export const DetailTopBox = styled.div`
 `;
 
 export const DetailSiteBox = styled.p`
-  width: 20%;
+  width: 25%;
 `;
 
 export const DetaileSiteParagraph = styled.p`
   margin-right: 0.3em;
+  font-size: 14px;
+  font-weight: 500;
+  color: #20c997;
 `;
 
 export const DetailProviderBox = styled.p`
@@ -50,7 +53,7 @@ export const DetailPlaceBox = styled.div`
   min-height: 4vh;
 `;
 export const DetailContentBox = styled.div`
-  min-height: 40vh;
+  min-height: 20vh;
 `;
 
 export const DetailPlaceParagraph = styled.p`

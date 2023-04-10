@@ -2,13 +2,21 @@ import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { ko } from "date-fns/esm/locale";
 import Navbar from "@/components/Navbar";
+
 import {
   RegisterButton,
+  RegisterCatagoryBox,
+  RegisterDateBox,
+  RegisterDateParagraph,
   RegisterInput,
+  RegisterPlaceSelect,
   RegisterSection,
+  RegisterSiteSelect,
   RegisterTitleBox,
   RegisterTitleParagraph,
+  StyledDatePicker,
 } from "./Register.styled";
 import { fireStore } from "@/firebase";
 import { selectDocId, selectUserEmail } from "@/feature/userSlice";
@@ -19,8 +27,8 @@ interface NewData {
   site?: string;
   provider?: string;
   place?: string;
-  submitDate?: string;
-  reviewDate?: string;
+  startDate?: string;
+  endDate?: string;
   support?: string;
   state?: string;
   registerDate?: Date;
@@ -32,10 +40,9 @@ export default function Register() {
   const [site, setSite] = useState("");
   const [provider, setProvider] = useState("");
   const [place, setPlace] = useState("");
-  const [submitDate, setSubmitDate] = useState("");
-  const [reviewDate, setReviewDate] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const today = new Intl.DateTimeFormat("kr").format(new Date());
+  const [startDate, setStartDate] = useState<string>(today);
+  const [endDate, setEndDate] = useState<string>(today);
   const [support, setSupport] = useState("");
   const navigate = useNavigate();
 
@@ -48,10 +55,10 @@ export default function Register() {
     newData.site = site;
     newData.provider = provider;
     newData.place = place;
-    newData.submitDate = submitDate;
-    newData.reviewDate = reviewDate;
     newData.support = support;
     newData.state = CONSTANT.PROCEDDING;
+    newData.startDate = startDate;
+    newData.endDate = endDate;
     newData.registerDate = new Date();
 
     await addDoc(registerInfo, newData);
@@ -60,8 +67,6 @@ export default function Register() {
     navigate("/Main");
   };
 
-  console.log(site);
-
   return (
     <Layout>
       <Navbar />
@@ -69,9 +74,8 @@ export default function Register() {
         <RegisterTitleBox>
           <RegisterTitleParagraph>Register</RegisterTitleParagraph>
         </RegisterTitleBox>
-        <div>
-          <p>체험단 사이트</p>
-          <select onChange={(e) => setSite(e.target.value)}>
+        <RegisterCatagoryBox>
+          <RegisterSiteSelect onChange={(e) => setSite(e.target.value)}>
             <option selected value="미블">
               미블
             </option>
@@ -81,13 +85,16 @@ export default function Register() {
             <option value="리뷰플레이스">리뷰플레이스</option>
             <option value="인스타협찬">인스타협찬</option>
             <option value="기타">기타</option>
-          </select>
-          <select value={place}>
-            <option>서울</option>
-            <option>경기</option>
-            <option>인천</option>
-          </select>
-        </div>
+          </RegisterSiteSelect>
+          <RegisterPlaceSelect
+            onChange={(e) => setPlace(e.target.value)}
+            value={place}
+          >
+            <option value="서울">서울시</option>
+            <option value="경기">경기시</option>
+            <option value="인천">인천시</option>
+          </RegisterPlaceSelect>
+        </RegisterCatagoryBox>
         <div>
           <RegisterInput
             type="text"
@@ -104,22 +111,28 @@ export default function Register() {
             placeholder="제공 내역"
           />
         </div>
-        <div>
-          <input
-            type="text"
-            value={submitDate}
-            onChange={(e) => setSubmitDate(e.target.value)}
-            placeholder="신청 날짜"
+        <RegisterDateBox>
+          <RegisterDateParagraph>리뷰등록 시작날</RegisterDateParagraph>
+          <StyledDatePicker
+            locale={ko}
+            dateFormat="yyyy.MM.dd"
+            value={startDate}
+            onChange={(date: Date) => {
+              setStartDate(new Intl.DateTimeFormat("kr").format(date));
+            }}
           />
-        </div>
-        <div>
-          <input
-            type="text"
-            value={reviewDate}
-            onChange={(e) => setReviewDate(e.target.value)}
-            placeholder="리뷰 기간"
+        </RegisterDateBox>
+        <RegisterDateBox>
+          <RegisterDateParagraph>리뷰등록 마감날</RegisterDateParagraph>
+          <StyledDatePicker
+            locale={ko}
+            dateFormat="yyyy.MM.dd"
+            value={endDate}
+            onChange={(date: Date) => {
+              setEndDate(new Intl.DateTimeFormat("kr").format(date));
+            }}
           />
-        </div>
+        </RegisterDateBox>
         <RegisterButton onClick={() => registerPosting()}>
           등록하기
         </RegisterButton>

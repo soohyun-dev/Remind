@@ -26,6 +26,7 @@
   "devDependencies": {
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",
+    "@types/react-datepicker": "^4.10.0",
     "@types/react-dom": "^18.0.11",
     "@types/react-query": "^1.2.9",
     "@types/react-redux": "^7.1.25",

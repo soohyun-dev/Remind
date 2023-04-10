@@ -22,20 +22,8 @@ import { Layout } from "@/styles/style";
 
 export default function Detail() {
   const location = useLocation();
-  const {
-    id,
-    place,
-    registerDate,
-    reviewDate,
-    provider,
-    site,
-    submitDate,
-    support,
-    state,
-  } = location.state;
-
-  const Site = "미블";
-  const Place = "서울시 마포구";
+  const { id, place, provider, site, startDate, endDate, support, state } =
+    location.state;
 
   return (
     <Layout>
@@ -43,7 +31,7 @@ export default function Detail() {
       <DetailSection>
         <DetailTopBox>
           <DetailSiteBox>
-            <DetaileSiteParagraph>&#91;{Site}&#93;</DetaileSiteParagraph>
+            <DetaileSiteParagraph>&#91;{site}&#93;</DetaileSiteParagraph>
           </DetailSiteBox>
           <DetailProviderBox>
             <DetailProviderParagraph>{provider}</DetailProviderParagraph>
@@ -53,11 +41,12 @@ export default function Detail() {
           </DetailStateBox>
         </DetailTopBox>
         <DetailPlaceBox>
-          <DetailPlaceParagraph>{Place}</DetailPlaceParagraph>
+          <DetailPlaceParagraph>{place}</DetailPlaceParagraph>
         </DetailPlaceBox>
         <DetailContentBox>
           <div>
-            <p>리뷰 기간: {submitDate}</p>
+            <p>리뷰 시작기간: {startDate}</p>
+            <p>리뷰 마감기간: {endDate}</p>
           </div>
           <div>
             <p>리뷰 마감까지 10일 남았습니다.😊</p>
