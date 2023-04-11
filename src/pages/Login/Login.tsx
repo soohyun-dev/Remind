@@ -75,6 +75,7 @@ export default function Login() {
     }
   };
 
+  console.log(userPassword);
   return (
     <Layout>
       <Navbar />
@@ -90,11 +91,9 @@ export default function Login() {
         </div>
         <div>
           <LoginInput
-            value={secretPassword}
-            onChange={(e) => {
-              setUserPassword(e.target.value);
-              setSecretPassword(e.target.value.replace(/./g, "●"));
-            }}
+            type="password"
+            value={userPassword}
+            onChange={(e) => setUserPassword(e.target.value)}
             placeholder="비밀번호"
           />
         </div>
