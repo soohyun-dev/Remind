@@ -20,7 +20,6 @@ import {
 } from "./Register.styled";
 import { fireStore } from "@/firebase";
 import { selectDocId, selectUserEmail } from "@/feature/userSlice";
-import CONSTANT from "@/constant/constant";
 import { Layout } from "@/styles/style";
 
 interface NewData {
@@ -98,7 +97,7 @@ export default function Register() {
             <option selected value="서울시">
               서울시
             </option>
-            <option value="경기시">경기시</option>
+            <option value="경기도">경기도</option>
             <option value="인천시">인천시</option>
           </RegisterPlaceSelect>
         </RegisterCatagoryBox>

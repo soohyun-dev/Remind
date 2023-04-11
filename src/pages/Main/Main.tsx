@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { Suspense, useState } from "react";
-import { Link } from "react-router-dom";
 import { selectDocId, selectNickname } from "@/feature/userSlice";
 
 import {
@@ -15,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import useOngoingPosting from "@/hooks/useOngoingPosting";
 import Preview from "@/components/Preview";
 import { Layout } from "@/styles/style";
+import { CONSTANT, GUIDE } from "@/constant/constant";
 
 export default function Main() {
   const nickName = useSelector(selectNickname);
@@ -46,31 +46,33 @@ export default function Main() {
             {nickName === null ? "" : <p> 안녕하세요! {nickName} 님</p>}
           </MainUserBox>
           <MainGuideBox>
-            <p>현재 진행중인 체험단 목록이에요!</p>
+            <p>{GUIDE.PROCEDDING}</p>
           </MainGuideBox>
         </MainIntroduceBox>
         <MainCatagoryBox>
-          <MainCatagoryButton onClick={() => catagoryHandler("진행중")}>
-            진행중
+          <MainCatagoryButton
+            onClick={() => catagoryHandler(CONSTANT.PROCEDDING)}
+          >
+            {CONSTANT.PROCEDDING}
           </MainCatagoryButton>
-          <MainCatagoryButton onClick={() => catagoryHandler("완료")}>
-            완료
+          <MainCatagoryButton onClick={() => catagoryHandler(CONSTANT.END)}>
+            {CONSTANT.END}
           </MainCatagoryButton>
-          <MainCatagoryButton onClick={() => catagoryHandler("전체")}>
-            전체
+          <MainCatagoryButton onClick={() => catagoryHandler(CONSTANT.ALL)}>
+            {CONSTANT.ALL}
           </MainCatagoryButton>
         </MainCatagoryBox>
         <Suspense fallback={<div>Loading...</div>}>
           {Object.keys(ongoingPosting)
             .filter((key: string) => {
               const { isEnd } = ongoingPosting[+key];
-              if (catagory === "진행중") {
+              if (catagory === CONSTANT.PROCEDDING) {
                 return isEnd === false;
               }
-              if (catagory === "완료") {
+              if (catagory === CONSTANT.END) {
                 return isEnd === true;
               }
-              if (catagory === "전체") {
+              if (catagory === CONSTANT.ALL) {
                 return true;
               }
               return false;

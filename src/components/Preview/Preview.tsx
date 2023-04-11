@@ -14,7 +14,7 @@ import {
   PreviewSiteBox,
   ProviderBox,
 } from "./Preview.styled";
-import CONSTANT from "@/constant/constant";
+import { CONSTANT } from "@/constant/constant";
 
 interface Posting {
   id: string;

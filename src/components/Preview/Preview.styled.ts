@@ -17,6 +17,7 @@ export const PreviewSiteBox = styled.div`
   margin: 0.5em 0;
   font-size: 14px;
   font-weight: 500;
+  color: #20c997;
 `;
 
 export const PreviewPlaceBox = styled.div`

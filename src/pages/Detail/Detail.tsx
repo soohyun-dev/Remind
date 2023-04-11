@@ -25,7 +25,7 @@ import { Layout } from "@/styles/style";
 import { DateDiff } from "@/utils/DateDiff";
 import { fireStore } from "@/firebase";
 import { selectDocId } from "@/feature/userSlice";
-import CONSTANT from "@/constant/constant";
+import { CONSTANT } from "@/constant/constant";
 
 export default function Detail() {
   const location = useLocation();

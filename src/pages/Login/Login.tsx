@@ -25,6 +25,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [secretPassword, setSecretPassword] = useState("");
   const [user, setUser] = useState({});
   const userInfo = ["", ""];
   const navigate = useNavigate();
@@ -89,7 +90,11 @@ export default function Login() {
         </div>
         <div>
           <LoginInput
-            onChange={(e) => setUserPassword(e.target.value)}
+            value={secretPassword}
+            onChange={(e) => {
+              setUserPassword(e.target.value);
+              setSecretPassword(e.target.value.replace(/./g, "●"));
+            }}
             placeholder="비밀번호"
           />
         </div>
