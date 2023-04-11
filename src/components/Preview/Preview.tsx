@@ -67,10 +67,10 @@ export default function Preview({
             <p>{isEnd ? CONSTANT.END : CONSTANT.PROCEDDING}</p>
           </PreviewReviewState>
           <PreviewReviewState>
-            <p>리뷰작성전</p>
+            <p>{isContact ? "컨텍완료" : "업체연결전"}</p>
           </PreviewReviewState>
           <PreviewReviewState>
-            <p>리뷰완료</p>
+            <p>{isVisited ? "방문완료" : "방문전"}</p>
           </PreviewReviewState>
         </PreviewReviewStateInnerBox>
       </PreviewReviewStateBox>
