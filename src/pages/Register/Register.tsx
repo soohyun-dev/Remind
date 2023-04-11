@@ -30,11 +30,11 @@ interface NewData {
   startDate?: string;
   endDate?: string;
   support?: string;
-  state?: string;
   registerDate?: Date;
+  isEnd?: boolean;
   isContact?: boolean;
   isVisited?: boolean;
-  isEnd?: boolean;
+  isUpload?: boolean;
 }
 
 export default function Register() {
@@ -59,13 +59,13 @@ export default function Register() {
     newData.provider = provider;
     newData.place = place;
     newData.support = support;
-    newData.state = CONSTANT.PROCEDDING;
+    newData.isEnd = false;
     newData.startDate = startDate;
     newData.endDate = endDate;
     newData.registerDate = new Date();
     newData.isContact = false;
     newData.isVisited = false;
-    newData.isEnd = false;
+    newData.isUpload = false;
     await addDoc(registerInfo, newData);
 
     alert("포스팅이 추가되었습니다.");
@@ -95,9 +95,11 @@ export default function Register() {
             onChange={(e) => setPlace(e.target.value)}
             value={place}
           >
-            <option value="서울">서울시</option>
-            <option value="경기">경기시</option>
-            <option value="인천">인천시</option>
+            <option selected value="서울시">
+              서울시
+            </option>
+            <option value="경기시">경기시</option>
+            <option value="인천시">인천시</option>
           </RegisterPlaceSelect>
         </RegisterCatagoryBox>
         <div>

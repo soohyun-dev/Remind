@@ -4,6 +4,10 @@ interface Finish {
   isFinish: boolean;
 }
 
+interface End {
+  isEnd: boolean;
+}
+
 export const DetailSection = styled.section`
   padding: 1em;
   background-color: #fff;
@@ -44,10 +48,10 @@ export const DetailStateBox = styled.p`
   text-align: center;
 `;
 
-export const DetailStateParagraph = styled.p`
+export const DetailStateParagraph = styled.p<End>`
   font-size: 16px;
   padding: 0.2em 0.6em;
-  background-color: #3f76ff;
+  background-color: ${(props) => (props.isEnd ? "#adb5bd" : "#3f76ff")};
   color: #fff;
   font-weight: 500;
   border-radius: 8px;

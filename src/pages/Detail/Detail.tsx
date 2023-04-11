@@ -25,6 +25,7 @@ import { Layout } from "@/styles/style";
 import { DateDiff } from "@/utils/DateDiff";
 import { fireStore } from "@/firebase";
 import { selectDocId } from "@/feature/userSlice";
+import CONSTANT from "@/constant/constant";
 
 export default function Detail() {
   const location = useLocation();
@@ -36,19 +37,25 @@ export default function Detail() {
     startDate,
     endDate,
     support,
-    state,
+    isEnd,
     isContact,
     isVisited,
-    isEnd,
+    isUpload,
   } = location.state;
 
   const [isContactInfo, setIsContactInfo] = useState(isContact);
   const [isVisitedInfo, setIsVisitedInfo] = useState(isVisited);
+  const [isUploadInfo, setIsUploadInfo] = useState(isUpload);
   const [isEndInfo, setIsEndInfo] = useState(isEnd);
 
   const docId = useSelector(selectDocId);
   const postingInfo = doc(fireStore, `users/${docId}/ongoingPosting`, id);
   const dDay = DateDiff(startDate, endDate);
+
+  const endHandler = async () => {
+    const newIsEnd = { isEnd: !isEndInfo };
+    await updateDoc(postingInfo, newIsEnd);
+  };
 
   const contactHandler = async () => {
     if (
@@ -61,6 +68,7 @@ export default function Detail() {
       const newContact = { isContact: !isContactInfo };
       await updateDoc(postingInfo, newContact);
       setIsContactInfo(!isContactInfo);
+      endHandler();
     }
   };
 
@@ -73,20 +81,30 @@ export default function Detail() {
       const newVisit = { isVisited: !isVisitedInfo };
       await updateDoc(postingInfo, newVisit);
       setIsVisitedInfo(!isVisitedInfo);
+      endHandler();
     }
   };
 
-  const reviewHandler = async () => {
+  const upLoadHandler = async () => {
     if (
       window.confirm(
         isEnd ? "리뷰등록을 취소하셨나요?" : "리뷰등록을 완료하셨나요?"
       )
     ) {
-      const newReview = { isEnd: !isEndInfo };
-      await updateDoc(postingInfo, newReview);
-      setIsEndInfo(!isEndInfo);
+      const newUpload = { isUpload: !isUploadInfo };
+      await updateDoc(postingInfo, newUpload);
+      setIsUploadInfo(!isUploadInfo);
+      endHandler();
     }
   };
+
+  useEffect(() => {
+    if (isContactInfo && isVisitedInfo && isUploadInfo) {
+      setIsEndInfo(true);
+    } else {
+      setIsEndInfo(false);
+    }
+  }, [isContactInfo, isVisitedInfo, isUploadInfo]);
 
   return (
     <Layout>
@@ -100,7 +118,9 @@ export default function Detail() {
             <DetailProviderParagraph>{provider}</DetailProviderParagraph>
           </DetailProviderBox>
           <DetailStateBox>
-            <DetailStateParagraph>{state}</DetailStateParagraph>
+            <DetailStateParagraph isEnd={isEndInfo}>
+              {isEndInfo ? CONSTANT.END : CONSTANT.PROCEDDING}
+            </DetailStateParagraph>
           </DetailStateBox>
         </DetailTopBox>
         <DetailPlaceBox>
@@ -150,14 +170,14 @@ export default function Detail() {
             )}
           </DetailButtonBox>
           <DetailButtonBox>
-            {isEndInfo ? (
-              <DetailFooterButton isFinish onClick={() => reviewHandler()}>
+            {isUploadInfo ? (
+              <DetailFooterButton isFinish onClick={() => upLoadHandler()}>
                 리뷰 등록 취소
               </DetailFooterButton>
             ) : (
               <DetailFooterButton
                 isFinish={false}
-                onClick={() => reviewHandler()}
+                onClick={() => upLoadHandler()}
               >
                 리뷰 등록 완료
               </DetailFooterButton>

@@ -14,6 +14,7 @@ import {
   PreviewSiteBox,
   ProviderBox,
 } from "./Preview.styled";
+import CONSTANT from "@/constant/constant";
 
 interface Posting {
   id: string;
@@ -27,10 +28,10 @@ interface Posting {
   startDate: string;
   endDate: string;
   support: string;
-  state: string;
+  isEnd: boolean;
   isContact: boolean;
   isVisited: boolean;
-  isEnd: boolean;
+  isUpload: boolean;
 }
 
 export default function Preview({
@@ -42,10 +43,10 @@ export default function Preview({
   startDate,
   endDate,
   support,
-  state,
+  isEnd,
   isContact,
   isVisited,
-  isEnd,
+  isUpload,
 }: Posting) {
   const dDay = DateDiff(startDate, endDate);
 
@@ -63,7 +64,7 @@ export default function Preview({
         </ProviderBox>
         <PreviewReviewStateInnerBox>
           <PreviewReviewState>
-            <p>{state}</p>
+            <p>{isEnd ? CONSTANT.END : CONSTANT.PROCEDDING}</p>
           </PreviewReviewState>
           <PreviewReviewState>
             <p>리뷰작성전</p>
@@ -91,10 +92,10 @@ export default function Preview({
               startDate,
               endDate,
               support,
-              state,
+              isEnd,
               isContact,
               isVisited,
-              isEnd,
+              isUpload,
             }}
           >
             <DetailButton>상세보기</DetailButton>
