@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Day {
+  day: number;
+}
+
 export const PreviewBox = styled.div`
   margin: 1.5em 0.5em;
   padding: 1em;
@@ -59,9 +63,9 @@ export const PreviewDateBox = styled.div`
   width: 75%;
 `;
 
-export const PreviewDdayParagraph = styled.p`
+export const PreviewDdayParagraph = styled.p<Day>`
   padding: 0.5em 0;
-  color: red;
+  color: ${(props) => (props.day <= 1 ? "red" : "black")};
   font-weight: 500;
 `;
 

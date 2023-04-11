@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Finish {
+  isFinish: boolean;
+}
+
 export const DetailSection = styled.section`
   padding: 1em;
   background-color: #fff;
@@ -80,14 +84,14 @@ export const DetailButtonBox = styled.div`
   text-align: center;
 `;
 
-export const DetailFooterButton = styled.button`
+export const DetailFooterButton = styled.button<Finish>`
   text-align: center;
   margin: 1em 0;
   padding: 0.8em 0;
   width: 100%;
   border: none;
   border-radius: 7px;
-  background-color: #3f76ff;
+  background-color: ${(props) => (props.isFinish ? "#adb5bd" : "#3f76ff")};
   color: #fff;
   font-size: 16px;
   font-weight: 500;

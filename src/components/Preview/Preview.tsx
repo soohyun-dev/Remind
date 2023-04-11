@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { DateDiff } from "@/utils/DateDiff";
 import {
   DetailButton,
   PreviewBox,
@@ -27,6 +28,9 @@ interface Posting {
   endDate: string;
   support: string;
   state: string;
+  isContact: boolean;
+  isVisited: boolean;
+  isEnd: boolean;
 }
 
 export default function Preview({
@@ -39,7 +43,12 @@ export default function Preview({
   endDate,
   support,
   state,
+  isContact,
+  isVisited,
+  isEnd,
 }: Posting) {
+  const dDay = DateDiff(startDate, endDate);
+
   return (
     <PreviewBox>
       <PreviewSiteBox>
@@ -66,7 +75,9 @@ export default function Preview({
       </PreviewReviewStateBox>
       <PreviewFooterBox>
         <PreviewDateBox>
-          <PreviewDdayParagraph>리뷰 마감기한 D-1</PreviewDdayParagraph>
+          <PreviewDdayParagraph day={dDay}>
+            리뷰 마감기한 D-{dDay}
+          </PreviewDdayParagraph>
         </PreviewDateBox>
         <PreviewButtonBox>
           <Link
@@ -81,6 +92,9 @@ export default function Preview({
               endDate,
               support,
               state,
+              isContact,
+              isVisited,
+              isEnd,
             }}
           >
             <DetailButton>상세보기</DetailButton>

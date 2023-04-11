@@ -32,6 +32,9 @@ interface NewData {
   support?: string;
   state?: string;
   registerDate?: Date;
+  isContact?: boolean;
+  isVisited?: boolean;
+  isEnd?: boolean;
 }
 
 export default function Register() {
@@ -60,7 +63,9 @@ export default function Register() {
     newData.startDate = startDate;
     newData.endDate = endDate;
     newData.registerDate = new Date();
-
+    newData.isContact = false;
+    newData.isVisited = false;
+    newData.isEnd = false;
     await addDoc(registerInfo, newData);
 
     alert("포스팅이 추가되었습니다.");
