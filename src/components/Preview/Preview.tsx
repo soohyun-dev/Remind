@@ -48,7 +48,10 @@ export default function Preview({
   isVisited,
   isUpload,
 }: Posting) {
-  const dDay = DateDiff(startDate, endDate);
+  const dDay = DateDiff(
+    new Intl.DateTimeFormat("kr").format(new Date()),
+    endDate
+  );
 
   return (
     <PreviewBox>

@@ -38,6 +38,59 @@
 
 <br><br><br>
 
+# 🖥️ 프로젝트 화면
+
+### 1️⃣ 온보딩
+
+<img src="https://user-images.githubusercontent.com/81623931/231091208-03dfd161-bdd3-4f72-a028-e19978885893.gif" width="300" height="500"/>
+
+- 서비스 첫 접속시 보여지는 화면입니다.
+- 애니메이션으로 시각적인 효과를 주어 흥미를 얻게하였습니다.
+
+<br><br><br>
+
+### 2️⃣ 회원가입
+
+<img src="https://user-images.githubusercontent.com/81623931/231091188-9da4c918-7af8-4518-b4d8-c55f4d081837.gif" width="300" height="500"/>
+
+- 본 서비스는 간편한 회원가입으로도 서비스를 이용할 수 있게 하였습니다.
+
+<br><br><br>
+
+### 3️⃣ 로그인
+
+<img src="https://user-images.githubusercontent.com/81623931/231091131-9bdbb623-65b7-4762-99a8-e549a5414f5f.gif" width="300" height="500"/>
+
+- 회원가입때 등록한 정보로 로그인합니다.
+
+<br><br><br>
+
+### 4️⃣ 포스팅 등록
+
+<img src="https://user-images.githubusercontent.com/81623931/231091229-152c36a8-f629-4172-8235-98aa14af1c62.gif" width="300" height="500"/>
+
+- 새로 진행할 체험단/협찬 게시물을 등록합니다.
+
+<br><br><br>
+
+### 5️⃣ 포스팅 프로세스 처리
+
+<img src="https://user-images.githubusercontent.com/81623931/231091217-452fd9e8-a53f-4c6e-b3f4-0a34fb773bf1.gif" width="300" height="500"/>
+
+- 진행중인 체험단/협찬 프로세스에 따라 완료처리를 수행합니다.
+- 컨텍, 방문, 업로드 세가지의 활동을 모두 수행처리하면 해당 포스팅은 완료처리됩니다.
+
+<br><br><br>
+
+### 6️⃣ 정렬 기능
+
+<img src="https://user-images.githubusercontent.com/81623931/231091235-14950f4e-8fed-4042-b6bc-82b0a8b46072.gif" width="300" height="500"/>
+
+- 체험단/협찬 프로세스에 맞는 게시물들을 선택해서 볼 수 있습니다.
+- `진행중`, `완료`, `전체` 총 세가지로 구분되어있으며, 카테고리를 클릭해서 선택해 볼 수 있습니다.
+
+<br><br><br>
+
 # 🛠️ 사용 기술
 
 ## 💻 Web Languages / Libraries
@@ -151,6 +204,8 @@
 <br><br><br>
 
 # 🏃‍♂️ 프로젝트 진행과정
+
+[📖 개발과정 포스팅](https://bmy1320.tistory.com/entry/Remind-%EC%9D%B8%ED%94%8C%EB%A3%A8%EC%96%B8%EC%84%9C-%EC%B2%B4%ED%97%98%EB%8B%A8%ED%98%91%EC%B0%AC-%EA%B4%80%EB%A6%AC-%EC%84%9C%EB%B9%84%EC%8A%A4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)
 
 <br><br><br>
 

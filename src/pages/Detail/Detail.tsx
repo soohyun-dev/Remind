@@ -50,7 +50,10 @@ export default function Detail() {
 
   const docId = useSelector(selectDocId);
   const postingInfo = doc(fireStore, `users/${docId}/ongoingPosting`, id);
-  const dDay = DateDiff(startDate, endDate);
+  const dDay = DateDiff(
+    new Intl.DateTimeFormat("kr").format(new Date()),
+    endDate
+  );
 
   const endHandler = async () => {
     const newIsEnd = { isEnd: !isEndInfo };

@@ -37,7 +37,7 @@ export const PreviewReviewStateBox = styled.div`
 export const ProviderBox = styled.div`
   margin: 0.2em 0 0 0;
   font-weight: 550;
-  width: 43%;
+  width: 50%;
 `;
 
 export const PreviewReviewStateInnerBox = styled.div`
